@@ -1,0 +1,43 @@
+import random
+print('*Subtract Two Numbers')
+
+TOTAL_RIGHT = 0
+TOTAL_WRONG = 0
+
+def quiz_subtract():
+    num1 = random.randint(1,1000)
+    num2 = random.randint(1,500)
+    answer = num1 - num2
+    print()
+    print(num1)
+    print('-')
+    print(num2)
+    print('----')
+    user_answer = int(input('Enter answer: '))
+    
+    if user_answer == answer:
+        print('Correct!')
+        global TOTAL_RIGHT 
+        TOTAL_RIGHT += 1
+        return TOTAL_RIGHT
+    else: 
+        print('Incorrect.')
+        print('The right answer is')
+        print(answer)
+        global TOTAL_WRONG 
+        TOTAL_WRONG += 1
+        return TOTAL_WRONG
+    
+next_question = ''
+while next_question == '':
+    quiz_subtract()
+    next_question = input('\nPress Enter for the \nnext question, \nor Q to quit: ')
+    if next_question not in ['','Q','q']:
+        print('Not a valid entry.')
+        next_question = input('\nPress Enter for the \nnext question, \nor Q to quit: ')
+        continue
+print('Right answers:')   
+print(TOTAL_RIGHT)
+print('Wrong answers:')
+print(TOTAL_WRONG)
+print('Great work!')
